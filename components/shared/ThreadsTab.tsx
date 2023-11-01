@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 //db actions
 import { fetchUserThreads } from "@/lib/actions/user.actions";
 import ThreadCard from "../cards/ThreadCard";
+import { fetchCommunityPosts } from "@/lib/actions/community.actions";
 
 interface ThreadsTabProps {
   currentUserId: string;
@@ -11,8 +12,14 @@ interface ThreadsTabProps {
 }
 
 const ThreadsTab = async ({ currentUserId, accountId, accountType }: ThreadsTabProps) => {
-  const result = await fetchUserThreads(accountId);
-  if (!result) redirect("/");
+  let result: any;
+
+  if (accountType === "Community") {
+    result = await fetchCommunityPosts(accountId);
+    if (!result) redirect("/");
+  } else {
+    result = await fetchUserThreads(accountId);
+  }
 
   return (
     <section className="mt-9 flex flex-col gap-10">
