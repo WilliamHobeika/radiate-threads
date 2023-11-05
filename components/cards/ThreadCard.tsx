@@ -3,6 +3,8 @@ import { formatDateString } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+import DeleteThread from "../forms/DeleteThread";
+
 export interface ThreadCardProps {
   id: string;
   currentUserId: string;
@@ -55,6 +57,7 @@ const ThreadCard = ({
                 className="cursor-pointer rounded-full object-cover"
               />
             </Link>
+
             <div className="thread-card_bar" />
           </div>
 
@@ -67,15 +70,15 @@ const ThreadCard = ({
 
             <p className="mt-2 text-small-regular text-light-2">{content}</p>
 
-            <div className="mt-5 flex flex-col gap-3">
+            <div className="mt-4 flex flex-col gap-3">
               <div className="flex">
-                <div className="flex rounded-full h-8 w-8 items-center justify-center border-white border-[1px] hover:bg-gradient-primary-400">
+                <div className="flex rounded-full h-8 w-8 items-center justify-center hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44]">
                   <Link href={`/thread/${id}`}>
                     <Image
                       src="/assets/reply.svg"
                       alt="reply"
-                      width={26}
-                      height={26}
+                      width={20}
+                      height={20}
                       className="cursor-pointer object-contain"
                     />
                   </Link>
@@ -85,7 +88,8 @@ const ThreadCard = ({
               {isComment && comments.length > 0 && (
                 <Link href={`/thread/${id}`}>
                   <p className="mt-1 text-subtle-medium text-gray-1">
-                    {comments.length} replies
+                    {comments.length} repl
+                    {comments.length > 1 || comments.length == 0 ? "ies" : "y"}{" "}
                   </p>
                 </Link>
               )}
@@ -93,14 +97,47 @@ const ThreadCard = ({
           </div>
         </div>
 
-        {/* delete a thread */}
-        {/* show comment logo */}
+        {/* deleting thread */}
+        <DeleteThread
+          threadId={JSON.stringify(id)}
+          currentUserId={currentUserId}
+          authorId={author.id}
+          parentId={parentId}
+          isComment={isComment}
+        />
       </div>
 
+      {/* displaying first 3 users' images */}
+      {!isComment && comments.length > 0 && (
+        <div className="ml-1 mt-3 flex items-center gap-2">
+          {comments.slice(0.2).map((comment, index) => (
+            <div className={`relative h-7 w-7 ${index !== 0 && "-ml-5"}`}>
+              <Image
+                key={index}
+                src={comment.author.image}
+                alt={`user_${index}`}
+                fill
+                className="rounded-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* displaying the number of replies */}
+      <Link href={`/thread/${id}`}>
+        <p className="mt-1 text-subtle-medium text-gray-1">
+          {comments.length} repl
+          {comments.length > 1 || comments.length == 0 ? "ies" : "y"}{" "}
+        </p>
+      </Link>
+
+      {/* displaying community details if the thread belongs one */}
       {!isComment && community && (
         <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
           <p className="text-subtle-medium text-gray-1">
-            {formatDateString(createdAt)} - {community.name} Community
+            {formatDateString(createdAt)}
+            {community && ` - ${community.name} Community`}
           </p>
           <Image
             src={community.image}
@@ -110,6 +147,12 @@ const ThreadCard = ({
             className="ml-1 rounded-full object-cover"
           />
         </Link>
+      )}
+
+      {!isComment && (
+        <div className="mt-5 flex items-center">
+          <p className="text-subtle-medium text-gray-1">{formatDateString(createdAt)}</p>
+        </div>
       )}
     </article>
   );

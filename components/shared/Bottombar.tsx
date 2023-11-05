@@ -19,7 +19,9 @@ const Bottombar = () => {
             <Link
               key={link.label}
               href={link.route}
-              className={`bottombar_link ${isActive && "bg-gradient-primary-500"}`}
+              className={`bottombar_link ${
+                isActive && "bg-gradient-to-r from-[#240B36] to-[#C31432]"
+              }`}
             >
               <Image src={link.imgURL} alt={link.label} width={24} height={24} />
               <p className="text-subtle-medium text-light-1 max-sm:hidden">

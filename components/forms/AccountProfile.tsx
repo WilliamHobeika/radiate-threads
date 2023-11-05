@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -44,6 +43,7 @@ interface AccountProfileProps {
 
 const AccountProfile = ({ user, btnTitle }: AccountProfileProps) => {
   const [files, setFiles] = useState<File[]>([]);
+
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
   const pathname = usePathname();
@@ -210,9 +210,9 @@ const AccountProfile = ({ user, btnTitle }: AccountProfileProps) => {
         {/* submit button */}
         <Button
           type="submit"
-          className="bg-gradient-primary-500 hover:bg-gradient-primary-400"
+          className="bg-gradient-to-r from-[#240B36] to-[#C31432] hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44]"
         >
-          Start Exploring
+          {btnTitle}
         </Button>
       </form>
     </Form>

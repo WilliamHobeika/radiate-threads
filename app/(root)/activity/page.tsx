@@ -47,7 +47,7 @@ const Page = async () => {
             ))}
           </>
         ) : (
-          <p className="!text-base-regular text-gray-1">You have no notifications</p>
+          <p className="!text-base-regular text-light-3">You have no notifications</p>
         )}
       </section>
     </>

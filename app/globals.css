@@ -47,7 +47,7 @@
   }
 
   .user-card_btn {
-    @apply h-auto min-w-[74px] rounded-lg bg-gradient-primary-500 hover:bg-gradient-primary-400 text-[12px] text-light-1 !important;
+    @apply h-auto min-w-[74px] rounded-lg bg-gradient-to-r from-[#240B36] to-[#C31432] hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44] text-[12px] text-light-1 !important;
   }
 
   .searchbar {
@@ -131,7 +131,7 @@
 
 /* Tab */
 .tab {
-  @apply flex min-h-[70px] flex-1 items-center px-3 gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-gradient-primary-500 data-[state=active]:text-light-1 data-[state=active]:min-h-[40px] !important;
+  @apply flex min-h-[70px] flex-1 items-center px-3 gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-[#240B36] data-[state=active]:to-[#C31432] data-[state=active]:text-light-1 data-[state=active]:min-h-[40px] !important;
 }
 
 .no-focus {
@@ -157,5 +157,5 @@
 }
 
 .comment-form_btn {
-  @apply rounded-3xl bg-gradient-primary-500 hover:bg-gradient-primary-400 px-8 py-2 !text-small-regular text-light-1 max-xs:w-full !important;
+  @apply rounded-3xl bg-gradient-to-r from-[#240B36] to-[#C31432] hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44] px-8 py-2 !text-small-regular text-light-1 max-xs:w-full max-xs:mt-3 !important;
 }

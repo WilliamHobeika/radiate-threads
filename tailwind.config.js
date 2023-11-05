@@ -190,10 +190,6 @@ module.exports = {
         "gray-1": "#697C89",
         glassmorphism: "rgba(16, 16, 18, 0.60)",
       },
-      backgroundImage: {
-        "gradient-primary-500": "linear-gradient(to right, #240B36, #C31432);",
-        "gradient-primary-400": "linear-gradient(to right, #401D59, #BF2A44);",
-      },
       boxShadow: {
         "count-badge": "0px 0px 6px 2px rgba(219, 188, 159, 0.30)",
         "groups-sidebar": "-30px 0px 60px 0px rgba(28, 28, 31, 0.50)",

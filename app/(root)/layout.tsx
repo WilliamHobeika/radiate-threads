@@ -23,6 +23,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <ClerkProvider
       appearance={{
         baseTheme: dark,
+        elements: {
+          formButtonPrimary: "bg-primary-500 hover:bg-primary-400",
+        },
       }}
     >
       <html lang="en">

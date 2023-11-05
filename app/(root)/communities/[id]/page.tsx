@@ -43,6 +43,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
                   className="object-contain"
                 />
                 <p className="max-sm:hidden">{tab.label}</p>
+
                 {tab.label === "Threads" && (
                   <p className="ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2">
                     {communityDetails?.threads?.length}
@@ -51,6 +52,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
               </TabsTrigger>
             ))}
           </TabsList>
+
           <TabsContent value="Threads" className="w-full text-light-1">
             <ThreadsTab
               currentUserId={user.id}
@@ -59,7 +61,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             />
           </TabsContent>
 
-          <TabsContent value="Members" className="w-full text-light-1">
+          <TabsContent value="Members" className="mt-9 w-full text-light-1">
             <section className="mt-9 flex flex-col gap-10">
               {communityDetails?.members.map((member: any) => (
                 <UserCard
@@ -74,7 +76,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
             </section>
           </TabsContent>
 
-          <TabsContent value="Threads" className="w-full text-light-1">
+          <TabsContent value="Requests" className="w-full text-light-1">
             <ThreadsTab
               currentUserId={user.id}
               accountId={communityDetails.id}
