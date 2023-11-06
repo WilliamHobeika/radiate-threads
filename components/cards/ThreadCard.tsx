@@ -107,30 +107,31 @@ const ThreadCard = ({
         />
       </div>
 
-      {/* displaying first 3 users' images */}
-      {!isComment && comments.length > 0 && (
-        <div className="ml-1 mt-3 flex items-center gap-2">
-          {comments.slice(0.2).map((comment, index) => (
-            <div className={`relative h-7 w-7 ${index !== 0 && "-ml-5"}`}>
-              <Image
-                key={index}
-                src={comment.author.image}
-                alt={`user_${index}`}
-                fill
-                className="rounded-full object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      )}
+      {/* displaying first 3 users' images and the number of replies */}
+      {!isComment && comments.length > 0 ? (
+        <Link href={`/thread/${id}`}>
+          <div className="mt-3 flex items-center gap-2 bg-light-1 w-fit px-2 py-2 rounded-md">
+            {comments.slice(0, 3).map((comment, index) => (
+              <div className={`relative h-7 w-7 ${index !== 0 && "-ml-4"}`}>
+                <Image
+                  key={index}
+                  src={comment.author.image}
+                  alt={`user_${index}`}
+                  fill
+                  className="rounded-full object-cover"
+                />
+              </div>
+            ))}
 
-      {/* displaying the number of replies */}
-      <Link href={`/thread/${id}`}>
-        <p className="mt-1 text-subtle-medium text-gray-1">
-          {comments.length} repl
-          {comments.length > 1 || comments.length == 0 ? "ies" : "y"}{" "}
-        </p>
-      </Link>
+            <p className="text-subtle-medium text-dark-4">
+              {comments.length} repl
+              {comments.length > 1 || comments.length == 0 ? "ies" : "y"}{" "}
+            </p>
+          </div>
+        </Link>
+      ) : (
+        <p className="mt-2 text-subtle-medium text-gray-1">Be the first to reply</p>
+      )}
 
       {/* displaying community details if the thread belongs one */}
       {!isComment && community && (

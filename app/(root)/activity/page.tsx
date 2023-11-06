@@ -38,9 +38,9 @@ const Page = async () => {
                   </div>
                   <p className="!text-small-regular text-light-1">
                     <span className="mr-1 text-primary-400">
-                      {notification.author.name}
+                      @{notification.author.name.split(" ")[0]}
                     </span>
-                    replied to your thread
+                    replied...
                   </p>
                 </article>
               </Link>
