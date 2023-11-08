@@ -21,7 +21,7 @@ export default async function Home({
   //if a user tried to switch his url manually without finishing the onboarding process
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  const result = await fetchThreads(searchParams.page ? +searchParams.page : 1, 20);
+  const result = await fetchThreads(searchParams.page ? +searchParams.page : 1, 10);
 
   return (
     <>

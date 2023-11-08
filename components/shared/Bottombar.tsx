@@ -3,10 +3,9 @@
 import { sidebarLinks } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const Bottombar = () => {
-  const router = useRouter();
   const pathname = usePathname();
   return (
     <section className="bottombar">
@@ -20,7 +19,7 @@ const Bottombar = () => {
               key={link.label}
               href={link.route}
               className={`bottombar_link ${
-                isActive && "bg-gradient-to-r from-[#240B36] to-[#C31432]"
+                isActive && "bg-gradient-to-r from-secondary-500 to-primary-500"
               }`}
             >
               <Image src={link.imgURL} alt={link.label} width={24} height={24} />

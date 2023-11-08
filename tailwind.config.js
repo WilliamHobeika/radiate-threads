@@ -175,8 +175,8 @@ module.exports = {
       colors: {
         "primary-500": "#C31432",
         "primary-400": "#BF2A44",
-        "secondary-500": "#FFB620",
-        blue: "#0095F6",
+        "secondary-500": "#240B36",
+        "secondary-400": "#401D59",
         "logout-btn": "#FF5A5A",
         "navbar-menu": "rgba(16, 16, 18, 0.6)",
         "dark-1": "#000000",

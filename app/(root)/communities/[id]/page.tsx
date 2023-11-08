@@ -21,7 +21,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
   return (
     <section>
       <ProfileHeader
-        accountId={communityDetails.id}
+        accountId={communityDetails.createdBy.id}
         authUserId={user.id}
         name={communityDetails.name}
         username={communityDetails.username}
@@ -53,15 +53,15 @@ const Page = async ({ params }: { params: { id: string } }) => {
             ))}
           </TabsList>
 
-          <TabsContent value="Threads" className="w-full text-light-1">
+          <TabsContent value="threads" className="w-full text-light-1">
             <ThreadsTab
               currentUserId={user.id}
-              accountId={communityDetails.id}
+              accountId={communityDetails._id}
               accountType="Community"
             />
           </TabsContent>
 
-          <TabsContent value="Members" className="mt-9 w-full text-light-1">
+          <TabsContent value="members" className="mt-9 w-full text-light-1">
             <section className="mt-9 flex flex-col gap-10">
               {communityDetails?.members.map((member: any) => (
                 <UserCard
@@ -74,14 +74,6 @@ const Page = async ({ params }: { params: { id: string } }) => {
                 />
               ))}
             </section>
-          </TabsContent>
-
-          <TabsContent value="Requests" className="w-full text-light-1">
-            <ThreadsTab
-              currentUserId={user.id}
-              accountId={communityDetails.id}
-              accountType="Community"
-            />
           </TabsContent>
         </Tabs>
       </div>

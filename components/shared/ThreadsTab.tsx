@@ -1,9 +1,35 @@
 import { redirect } from "next/navigation";
 
+import ThreadCard from "../cards/ThreadCard";
+
 //db actions
 import { fetchUserThreads } from "@/lib/actions/user.actions";
-import ThreadCard from "../cards/ThreadCard";
 import { fetchCommunityPosts } from "@/lib/actions/community.actions";
+
+interface ResultProps {
+  name: string;
+  image: string;
+  id: string;
+  threads: {
+    _id: string;
+    text: string;
+    parentId: string | null;
+    author: {
+      id: string;
+      name: string;
+      image: string;
+    };
+    community: {
+      id: string;
+      name: string;
+      image: string;
+    } | null;
+    createdAt: string;
+    children: {
+      author: { image: string };
+    }[];
+  }[];
+}
 
 interface ThreadsTabProps {
   currentUserId: string;
@@ -12,7 +38,7 @@ interface ThreadsTabProps {
 }
 
 const ThreadsTab = async ({ currentUserId, accountId, accountType }: ThreadsTabProps) => {
-  let result: any;
+  let result: ResultProps;
 
   if (accountType === "Community") {
     result = await fetchCommunityPosts(accountId);
@@ -42,8 +68,12 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }: ThreadsTabP
                   name: thread.author.name,
                   image: thread.author.image,
                 }
-          } //check if we should get the data from the result directly or from the thread itseld
-          community={thread.community} //later update to see if the current user is the one whos visiting the profile
+          }
+          community={
+            accountType === "Community"
+              ? { name: result.name, id: result.id, image: result.image }
+              : thread.community
+          }
           createdAt={thread.createdAt}
           comments={thread.children}
         />

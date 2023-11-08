@@ -72,7 +72,7 @@ const ThreadCard = ({
 
             <div className="mt-4 flex flex-col gap-3">
               <div className="flex">
-                <div className="flex rounded-full h-8 w-8 items-center justify-center hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44]">
+                <div className="flex rounded-full h-8 w-8 items-center justify-center hover:bg-gradient-to-r hover:from-secondary-400 hover:to-primary-400">
                   <Link href={`/thread/${id}`}>
                     <Image
                       src="/assets/reply.svg"
@@ -136,21 +136,22 @@ const ThreadCard = ({
       {/* displaying community details if the thread belongs one */}
       {!isComment && community && (
         <Link href={`/communities/${community.id}`} className="mt-5 flex items-center">
-          <p className="text-subtle-medium text-gray-1">
+          <p className="text-subtle-medium leading-none text-gray-1">
             {formatDateString(createdAt)}
             {community && ` - ${community.name} Community`}
           </p>
-          <Image
-            src={community.image}
-            alt={community.name}
-            width={14}
-            height={14}
-            className="ml-1 rounded-full object-cover"
-          />
+          <div className="relative w-6 h-6 max-sm:hidden">
+            <Image
+              src={community.image}
+              alt={community.name}
+              fill
+              className="ml-1 rounded-full object-cover"
+            />
+          </div>
         </Link>
       )}
 
-      {!isComment && (
+      {!isComment && !community && (
         <div className="mt-5 flex items-center">
           <p className="text-subtle-medium text-gray-1">{formatDateString(createdAt)}</p>
         </div>

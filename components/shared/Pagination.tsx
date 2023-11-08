@@ -36,7 +36,7 @@ const Pagination = ({ pageNumber, isNext, path }: PaginationProps) => {
       <Button
         onClick={() => handleNavigation("prev")}
         disabled={pageNumber === 1}
-        className="!text-small-regular text-light-2"
+        className="!text-small-regular text-light-2 bg-gradient-to-r from-secondary-500 to-primary-500 hover:bg-gradient-to-r hover:from-secondary-400 hover:to-primary-400"
       >
         Prev
       </Button>
@@ -46,7 +46,7 @@ const Pagination = ({ pageNumber, isNext, path }: PaginationProps) => {
       <Button
         onClick={() => handleNavigation("next")}
         disabled={!isNext}
-        className="!text-small-regular text-light-2"
+        className="!text-small-regular text-light-2 bg-gradient-to-r from-secondary-500 to-primary-500 hover:bg-gradient-to-r hover:from-secondary-400 hover:to-primary-400"
       >
         Next
       </Button>

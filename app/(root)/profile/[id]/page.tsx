@@ -57,7 +57,7 @@ const Page = async ({ params }: { params: { id: string } }) => {
           {profileTabs.map((tab) => (
             <TabsContent
               key={`content-${tab.label}`}
-              value={tab.value}
+              value="threads"
               className="w-full text-light-1"
             >
               <ThreadsTab

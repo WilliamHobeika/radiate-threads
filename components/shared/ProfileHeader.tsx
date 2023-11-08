@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProfileHeaderProps {
   accountId: string;
@@ -37,10 +38,20 @@ const ProfileHeader = ({
             <p className="text-base-medium text-gray-1">@{username}</p>
           </div>
         </div>
+
+        {accountId === authUserId && type !== "Community" && (
+          <Link href="/profile/edit">
+            <div className="flex cursor-pointer gap-3 rounded-lg bg-dark-4 px-4 py-2 hover:bg-gradient-to-r hover:from-secondary-400 hover:to-primary-400">
+              <Image src="/assets/edit.svg" alt="edit" width={16} height={16} />
+              <p className="text-light-2 max-sm:hidden">Edit</p>
+            </div>
+          </Link>
+        )}
       </div>
 
-      {/* todo community */}
-      <p className="mt-6 max-w-lg text-base-regular text-light-2">{bio}</p>
+      <p className="mt-6 max-w-lg text-base-regular text-light-2">
+        {type === "Community" ? name + " community" : bio}
+      </p>
       <div className="mt-12 h-0.5 w-full bg-dark-3"></div>
     </div>
   );

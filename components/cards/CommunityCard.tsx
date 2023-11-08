@@ -47,20 +47,19 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: CommunityCa
         {members.length > 0 && (
           <div className="flex items-center">
             {members.map((member, index) => (
-              <Image
-                key={index}
-                src={member.image}
-                alt={`user_${index}`}
-                width={28}
-                height={28}
-                className={`${index !== 0 && "-ml-2"} rounded-full object-cover`}
-              />
+              <div className={`relative h-7 w-7 ${index !== 0 && "-ml-2"}`}>
+                <Image
+                  key={index}
+                  src={member.image}
+                  alt={`user_${index}`}
+                  fill
+                  className="rounded-full object-cover"
+                />
+              </div>
             ))}
-            {members.length > 3 && (
-              <p className="ml-1 text-subtle-medium text-gray-1">
-                {members.length}+ Users
-              </p>
-            )}
+            <p className="ml-1 text-subtle-medium text-gray-1">
+              {members.length}+ Members
+            </p>
           </div>
         )}
       </div>

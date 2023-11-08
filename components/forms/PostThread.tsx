@@ -72,7 +72,7 @@ const PostThread = ({ userId }: { userId: string }) => {
         {/* submit button */}
         <Button
           type="submit"
-          className="bg-gradient-to-r from-[#240B36] to-[#C31432] hover:bg-gradient-to-r hover:from-[#401D59] hover:to-[#BF2A44]"
+          className="bg-gradient-to-r from-secondary-500 to-primary-500 hover:bg-gradient-to-r hover:from-secondary-400 hover:to-primary-400"
         >
           Post Thread
         </Button>
